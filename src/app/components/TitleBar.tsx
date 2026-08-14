@@ -1,7 +1,7 @@
 export default function TitleBar() {
   return (
     <div 
-      className="h-8 flex items-center px-3"
+      className="h-8 flex items-center px-3 flex-shrink-0 select-none"
       style={{
         backgroundColor: '#000000',
       }}

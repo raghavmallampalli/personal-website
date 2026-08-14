@@ -47,12 +47,23 @@
 }
 
 /* Remove default Next.js theme block if present, or ensure it doesn't override Dracula */
-/* @theme inline { ... } */
-
+html,
 body {
+  height: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: var(--dracula-darker); /* Outer area uses darker shade */
   color: var(--dracula-foreground);
   font-family: var(--font-geist-sans), 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 1rem;
+  }
 }
 
 ::selection {

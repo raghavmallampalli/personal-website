@@ -26,7 +26,7 @@ export default function Sidebar() {
 
   return (
     <aside 
-      className="w-12 p-4 flex flex-col items-center justify-between h-full"
+      className="hidden md:flex w-12 p-4 flex-col items-center justify-between h-full flex-shrink-0"
       style={{ backgroundColor: 'var(--dracula-current-line)' }}
     >
       <div className="flex flex-col items-center space-y-6">
