@@ -70,7 +70,9 @@ export default function Sidebar() {
           alt="Profile Photo"
           width={32}
           height={32}
-          className="w-full h-full object-cover object-center rounded-full"
+          priority
+          loading="eager"
+          className="w-full h-full object-cover rounded-full scale-110 translate-x-[2px]"
         />
       </div>
     </aside>

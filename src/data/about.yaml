@@ -1,7 +1,7 @@
 about:
   profile:
     name: "Raghav Mallampalli"
-    title: "Deep Learning Engineer"
+    title: "Deep Learning Researcher | Data Scientist"
   
   links:
     - icon: "🔬"
@@ -20,7 +20,7 @@ about:
       url: "/experience"
   
   current_hustle:
-    title: "What keeps my lights on"
-    message: "I'm currently building time series models @"
-    link_url: "https://www.synthefy.com/"
-    link_text: "Synthefy, Austin"
+    title: "My Current Hustle"
+    message: "I'm currently building structured data models "
+    link_url: "https://utaustin-swarmlab.github.io/about/"
+    link_text: "@Swarm Lab, University of Texas at Austin"

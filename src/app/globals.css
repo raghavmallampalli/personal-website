@@ -308,6 +308,7 @@ a:hover {
   font-size: 1rem !important;
   text-anchor: start !important;
   white-space: nowrap;
+  transform: none !important;
 }
 
 /* Occupation commits - make text uppercase and cyan */

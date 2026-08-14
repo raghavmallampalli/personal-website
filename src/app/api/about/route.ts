@@ -1,19 +1,14 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import yaml from 'js-yaml';
+import { getAboutData } from '@/lib/data';
 
 export const dynamic = 'force-static';
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), 'src', 'data', 'about.yaml');
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const data = yaml.load(fileContents);
-    
+    const data = getAboutData();
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error reading about data:', error);
     return NextResponse.json({ error: 'Failed to load about data' }, { status: 500 });
   }
-} 
+}

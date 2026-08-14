@@ -1,79 +1,10 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from "next/link";
-
-interface AboutLink {
-  icon: string;
-  text: string;
-  type: 'internal' | 'external';
-  url: string;
-}
-
-interface AboutData {
-  about: {
-    profile: {
-      name: string;
-      title: string;
-    };
-    links: AboutLink[];
-    current_hustle: {
-      title: string;
-      message: string;
-      link_text: string;
-      link_url: string;
-    };
-  };
-}
-
-interface Obsession {
-  title: string;
-  description: string;
-  icon: string;
-  color: string;
-  link: string;
-}
-
-interface ObsessionsData {
-  obsessions: Obsession[];
-}
+import { getAboutData, getObsessionsData } from "@/lib/data";
 
 export default function Home() {
-  const [aboutData, setAboutData] = useState<AboutData | null>(null);
-  const [obsessionsData, setObsessionsData] = useState<ObsessionsData | null>(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const [aboutResponse, obsessionsResponse] = await Promise.all([
-          fetch('/api/about'),
-          fetch('/api/obsessions')
-        ]);
-        
-        const aboutResult = await aboutResponse.json();
-        const obsessionsResult = await obsessionsResponse.json();
-        
-        setAboutData(aboutResult);
-        setObsessionsData(obsessionsResult);
-      } catch (error) {
-        console.error('Failed to load data:', error);
-      }
-    };
-
-    loadData();
-  }, []);
-
-  if (!aboutData || !obsessionsData) {
-    return (
-      <div className="page-container">
-        <div className="mb-6">
-          <h1 className="text-2xl md:text-3xl font-light page-title">
-            Loading...
-          </h1>
-        </div>
-      </div>
-    );
-  }
+  const aboutData = getAboutData();
+  const obsessionsData = getObsessionsData();
 
   return (
     <div className="page-container">

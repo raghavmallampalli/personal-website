@@ -1,67 +1,9 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CustomScrollbar from '@/components/CustomScrollbar';
-
-interface Skill {
-  name: string;
-  color: string;
-  description: string;
-}
-
-interface SkillSection {
-  cell_number: string;
-  cell_type: string;
-  title: string;
-  skills: Skill[];
-}
-
-interface OutputItem {
-  text: string;
-  color: string;
-}
-
-interface CodeCell {
-  cell_number: string;
-  cell_type: string;
-  code: string;
-  output: OutputItem[];
-}
-
-interface SkillsData {
-  skills: {
-    sections: SkillSection[];
-    code_cell: CodeCell;
-  };
-}
+import { getSkillsData } from '@/lib/data';
 
 export default function SkillsPage() {
-  const [skillsData, setSkillsData] = useState<SkillsData | null>(null);
-
-  useEffect(() => {
-    const loadSkillsData = async () => {
-      try {
-        const response = await fetch('/api/skills');
-        const data = await response.json();
-        setSkillsData(data);
-      } catch (error) {
-        console.error('Failed to load skills data:', error);
-      }
-    };
-
-    loadSkillsData();
-  }, []);
-
-  if (!skillsData) {
-    return (
-      <div className="page-container">
-        <h1 className="text-2xl md:text-3xl font-light page-title">Skills</h1>
-        <p className="text-sm mb-6" style={{ color: 'var(--dracula-comment)' }}>
-          Loading skills...
-        </p>
-      </div>
-    );
-  }
+  const skillsData = getSkillsData();
 
   return (
     <div className="page-container">
@@ -121,4 +63,4 @@ export default function SkillsPage() {
       </CustomScrollbar>
     </div>
   );
-} 
+}

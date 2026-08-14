@@ -53,3 +53,19 @@ experience:
       - name: "Fullstack UX development for translation experience"
       - name: "Built triggering models for translation intent that brought Bing to parity with competition"
       - name: "Prompt engineered for improved translation quality"
+  
+  - occupation: "Member of Technical Staff @ Synthefy"
+    start-date: "June 2025"
+    place: "Remote"
+    events:
+      - name: "Developed deep and foundational models for structured data"
+      - name: "Focused on time series and tabular data"
+      - name: "Researched and implemented agentic systems for working with structured data"
+      - name: "Engineering support for training at scale and deployment of models"
+
+  - occupation: "Graduate Research Assistant @ Swarm Lab, University of Texas at Austin"
+    start-date: "August 2026"
+    place: "Austin, Texas"
+    events:
+      - name: "Incoming Electrical and Computer Engineering Master's student at University of Texas at Austin"
+      - name: "Specialization in Decision Information and Communications Engineering - focus on deep learning"

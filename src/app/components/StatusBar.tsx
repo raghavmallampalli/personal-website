@@ -1,47 +1,7 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FaTwitter, FaInstagram, FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { VscRemote, VscError, VscWarning, VscSync, VscBell } from "react-icons/vsc";
-
-interface SocialLink {
-  platform: string;
-  url: string;
-  icon: string;
-}
-
-interface ContactLink {
-  type: string;
-  url: string;
-  display_text?: string;
-  title?: string;
-  icon: string;
-  size?: number;
-  show_text_on_mobile?: boolean;
-}
-
-interface StatusBarData {
-  statusbar: {
-    wsl_indicator: {
-      url: string;
-      icon: string;
-      background_color: string;
-    };
-    left_section: {
-      title: string;
-      links: SocialLink[];
-    };
-    right_section: {
-      status_indicators: {
-        sync_icon: string;
-        errors: number;
-        warnings: number;
-      };
-      contact_links: ContactLink[];
-      notification_icon: string;
-    };
-  };
-}
+import { getStatusbarData } from '@/lib/data';
 
 // Icon mapping
 const iconMap = {
@@ -58,37 +18,7 @@ const iconMap = {
 };
 
 export default function StatusBar() {
-  const [statusData, setStatusData] = useState<StatusBarData | null>(null);
-
-  useEffect(() => {
-    const loadStatusData = async () => {
-      try {
-        const response = await fetch('/api/statusbar');
-        const data = await response.json();
-        setStatusData(data);
-      } catch (error) {
-        console.error('Failed to load status bar data:', error);
-      }
-    };
-
-    loadStatusData();
-  }, []);
-
-  if (!statusData) {
-    return (
-      <footer
-        className="h-8 flex items-center justify-between text-xs relative"
-        style={{
-          backgroundColor: "var(--dracula-darker)",
-          color: "var(--dracula-foreground)",
-        }}
-      >
-        <div className="flex items-center space-x-4 pl-12">
-          <span className="text-[var(--dracula-comment)]">Loading...</span>
-        </div>
-      </footer>
-    );
-  }
+  const statusData = getStatusbarData();
 
   const clickableIconClass = "!text-[var(--dracula-foreground)] hover:!text-[var(--dracula-purple)]";
   const clickableTextClass = "!text-[var(--dracula-foreground)]";
@@ -175,4 +105,4 @@ export default function StatusBar() {
       </div>
     </footer>
   );
-} 
+}
